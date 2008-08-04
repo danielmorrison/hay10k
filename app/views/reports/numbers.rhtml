@@ -15,7 +15,7 @@
 	<td><%=h person.name %></td>
 	<td><%=h person.hometown %></td>
 	<td><%=h person.age %></td>
-	<td><%=h person.age_group.name %></td>
+	<td><%=h person.age_group(@race).name %></td>
 </tr>	
 <% end -%>
 </tbody>

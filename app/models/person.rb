@@ -21,7 +21,7 @@ class Person < ActiveRecord::Base
   has_many :registrations
   has_many :races, :through => :registrations
   
-  has_one  :finish
+  has_many  :finishes
   
   validates_presence_of :first_name
   validates_presence_of :last_name
@@ -34,36 +34,37 @@ class Person < ActiveRecord::Base
   
   acts_as_geocodable :address => {:street => :street, :locality => :city, :region => :state, :postal_code => :zip}
   
-  def time
-    finish ? finish.time : ''
+  def time(race)
+    finishes.for_race(race).first ? finishes.for_race(race).first.time : ''
   end
   
-  def place
-    people = race.people.find(:all, :order => "finishes.place", :include => :finish)
-    rank_in_group(people)
+  def place(race)
+    people = race.people.find(:all, :order => "finishes.place", :include => :finishes)
+    rank_in_group(people, race)
   end
   
-  def place_in_age_group
+  def place_in_age_group(race)
     if race.overall_winners_for_gender(gender).include?(self)
       race.overall_winners_for_gender(gender).index(self) + 1 
     else
-      self.age_group.people.reject{|p| race.overall_winners_for_gender(gender).include?(p) }.index(self) + 1
+      self.age_group(race).people.reject{|p| race.overall_winners_for_gender(gender).include?(p) }.index(self) + 1
     end
   end
   
-  def readable_place_in_age_group(limit=4)
-    # only talk about a few
-    place = place_in_age_group
-    if time.blank? || place && place > limit
-      '' 
-    elsif race.overall_winners_for_gender(gender).include?(self)
-      # eliminate the overalls
-      "#{number_to_ordinal(place)} #{gender}'s Overall" 
-    else
-      "#{number_to_ordinal(place)} in #{age_group.name}"
+  def readable_place_in_age_group(race, limit=4)
+    if age_group(race)
+      # only talk about a few
+      place = place_in_age_group(race)
+      if time(race).blank? || place && place > limit
+        '' 
+      elsif race.overall_winners_for_gender(gender).include?(self)
+        # eliminate the overalls
+        "#{number_to_ordinal(place)} #{gender}'s Overall" 
+      else
+        "#{number_to_ordinal(place)} in #{age_group(race).name}"
+      end
     end
   end
-  
   
   def name
     "#{first_name} #{last_name}"
@@ -77,17 +78,17 @@ class Person < ActiveRecord::Base
     zip =~ /[^\d]/ ? 'Canada' : ''
   end
   
-  def age_group
+  def age_group(race)
     race.age_groups.find(:first, 
       :conditions => ['low <= :age AND high >= :age AND gender_id = :gender', {:age => self.age, :gender => self.gender_id}])
   end
   
 private
 
-  def rank_in_group(people)    
+  def rank_in_group(people, race)    
     place = people.index(self)
     
-    while place > 0 && people[place-1].time == self.time
+    while place > 0 && people[place-1].time(race) == self.time(race)
       place -= 1
     end
     

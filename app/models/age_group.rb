@@ -30,7 +30,7 @@ class AgeGroup < ActiveRecord::Base
   end
   
   def people
-    race.people.find(:all, :conditions => [':low <= age AND :high >= age AND gender_id = :gender', {:low => self.low, :high => self.high, :gender => self.gender_id}], :order => "finishes.place", :include => :finish)
+    race.people.find(:all, :conditions => [':low <= age AND :high >= age AND gender_id = :gender', {:low => self.low, :high => self.high, :gender => self.gender_id}], :order => "finishes.place", :include => :finishes)
   end
   
 end

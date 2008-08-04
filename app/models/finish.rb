@@ -10,10 +10,10 @@
 #
 
 class Finish < ActiveRecord::Base
-  belongs_to  :person
+  belongs_to :person
   belongs_to :year
   
-  #delegate  :number, :to => :person
+  named_scope :for_race, lambda{|race| {:conditions => {:year_id => race.year}}}
   
   def number
     person.blank? ? nil : person.number

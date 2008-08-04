@@ -1,15 +1,15 @@
 class ReportsController < ApplicationController
+  skip_before_filter :find_race
   
   def race
     @race = Race.find(params[:id])
-    @people = @race.people.find(:all, :order => "finishes.place", :include => :finish)
+    @people = @race.people.find(:all, :order => "finishes.place", :include => :finishes)
     
   end
   
   def numbers
     @race = Race.find(params[:id])
-    @people = @race.people.find(:all, :order => 'number')
-    
+    @people = @race.people.all(:order => 'number')
   end
   
   def age_groups
