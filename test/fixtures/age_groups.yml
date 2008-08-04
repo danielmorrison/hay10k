@@ -1,0 +1,17 @@
+# == Schema Information
+# Schema version: 5
+#
+# Table name: age_groups
+#
+#  id        :integer(11)   not null, primary key
+#  low       :integer(11)   
+#  high      :integer(11)   
+#  gender_id :integer(11)   
+#  race_id   :integer(11)   
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first:
+  id: 1
+another:
+  id: 2

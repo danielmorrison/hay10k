@@ -1,0 +1,22 @@
+<table>
+	<thead>
+		<tr>
+			<th>Number</th>
+			<th>Name</th>
+			<th>Hometown</th>
+			<th>Age</th>
+			<th>Age Group</th>
+		</tr>
+	</thead>
+	<tbody>
+<% @people.each do |person| -%>
+<tr>
+	<td class="right"><%=h person.number %></td>
+	<td><%=h person.name %></td>
+	<td><%=h person.hometown %></td>
+	<td><%=h person.age %></td>
+	<td><%=h person.age_group.name %></td>
+</tr>	
+<% end -%>
+</tbody>
+</table>

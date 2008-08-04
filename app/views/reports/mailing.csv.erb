@@ -1,0 +1,4 @@
+<%= %w(name age gender street city state zip race).join(',') %>
+<%- @races.map(&:people).flatten.each do |person| -%>
+<%= [person.name, person.age, person.gender, person.street, person.city, person.state, person.zip, person.race].map{|x| "\"#{x.to_s.gsub('"', '""')}\""}.join(',') %>
+<%- end -%>

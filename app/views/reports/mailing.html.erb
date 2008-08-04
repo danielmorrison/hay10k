@@ -1,0 +1,19 @@
+<h1>People as hCards</h1>
+
+<p><%= link_to 'download .vcf', "http://feeds.technorati.com/contact/#{controller.request.url}"%></p>
+
+<ul>
+  <%- @races.map(&:people).flatten.each do |person| -%>
+  <li class="vcard">
+    <span class="fn"><%=h person.name %></span><br />
+    <div class="adr">
+      <div class="street-address"><%=h person.street %></div>
+      <span class="locality"><%=h person.city %></span>,  
+      <span class="region"><%=h person.state %></span>  
+      <span class="postal-code"><%=h person.zip %></span>
+      <div class="country-name"><%=h person.country %></div>
+    </div>
+    <span class="note">2007 - <%=h person.race %></span>
+  </li>
+  <%- end -%>
+</ul>

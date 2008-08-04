@@ -1,0 +1,22 @@
+<table>
+	<thead>
+		<tr>
+			<th>Place</th>
+			<th>Time</th>
+			<th>Name</th>
+			<th>Hometown</th>
+			<th> </th>
+		</tr>
+	</thead>
+	<tbody>
+<% @people.each do |person| -%>
+<tr>
+	<td class="right"><%=h person.place unless person.finish.nil? %></td>
+	<td class="right"><%=h person.time unless person.finish.nil? %></td>
+	<td><%=h person.name %></td>
+	<td><%=h person.hometown %></td>
+	<td><%=h person.readable_place_in_age_group %></td>
+</tr>	
+<% end -%>
+</tbody>
+</table>

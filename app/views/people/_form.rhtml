@@ -1,0 +1,34 @@
+<%= error_messages_for 'person' %>
+
+<!--[form:person]-->
+<p><label for="person_race_id">Race</label><br/>
+<%= select :person, :race_id, Race.find_all_by_year_id(@year, :order => 'distance DESC').collect {|c| [ c.name, c.id ] } %></p>
+
+<p><label for="person_number">Number</label><br/>
+<%= text_field 'person', 'number', :size => 5  %></p>
+
+<p><label for="person_first_name">First name</label><br/>
+<%= text_field 'person', 'first_name'  %></p>
+
+<p><label for="person_last_name">Last name</label><br/>
+<%= text_field 'person', 'last_name'  %></p>
+
+<p><label for="person_age">Age</label><br/>
+<%= text_field 'person', 'age', :size => 3  %></p>
+
+<p><label for="person_gender_id">Gender</label><br/>
+<%= select :person, :gender_id, Gender.find(:all, :order => 'name DESC').collect {|c| [ c.name, c.id ] } %></p>
+
+<p><label for="person_street">Street</label><br/>
+<%= text_field 'person', 'street'  %></p>
+
+<p><label for="person_city">City</label><br/>
+<%= text_field 'person', 'city'  %></p>
+
+<p><label for="person_state">State</label><br/>
+<%= text_field 'person', 'state'  %></p>
+
+<p><label for="person_zip">Zip</label><br/>
+<%= text_field 'person', 'zip'  %></p>
+<!--[eoform:person]-->
+

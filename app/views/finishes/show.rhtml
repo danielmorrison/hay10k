@@ -1,0 +1,8 @@
+<% for column in Finish.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @finish.send(column.name) %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', :action => 'edit', :id => @finish %> |
+<%= link_to 'Back', :action => 'list' %>
