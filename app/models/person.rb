@@ -18,7 +18,9 @@
 
 class Person < ActiveRecord::Base
   belongs_to  :gender
-  belongs_to  :race
+  has_many :registrations
+  has_many :races, :through => :registrations
+  
   has_one  :finish
   
   validates_presence_of :first_name

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080802122208) do
+ActiveRecord::Schema.define(:version => 20080804215122) do
 
   create_table "age_groups", :force => true do |t|
     t.integer "low"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20080802122208) do
     t.string  "city"
     t.string  "state"
     t.string  "zip"
-    t.integer "race_id"
     t.integer "number"
   end
 
@@ -76,6 +75,15 @@ ActiveRecord::Schema.define(:version => 20080802122208) do
   add_index "races", ["name"], :name => "index_races_on_name"
   add_index "races", ["distance"], :name => "index_races_on_distance"
   add_index "races", ["year_id"], :name => "index_races_on_year_id"
+
+  create_table "registrations", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "race_id"
+    t.integer  "year_id"
+    t.integer  "lock_version", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "years", :force => true do |t|
     t.integer  "year"
