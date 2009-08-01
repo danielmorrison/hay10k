@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/acts_as_geocodable"]
+	path = vendor/plugins/acts_as_geocodable
+	url = git://github.com/collectiveidea/acts_as_geocodable

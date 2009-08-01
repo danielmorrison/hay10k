@@ -1,5 +1,4 @@
 .svn
 .rake_tasks
-vendor/*
 *.db
 *.log
