@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 5
 #
 # Table name: races
 #
-#  id       :integer(11)   not null, primary key
-#  name     :string(255)   
-#  distance :integer(11)   
+#  id       :integer(11)     not null, primary key
+#  name     :string(255)
+#  distance :integer(11)
+#  year_id  :integer(11)
 #
 
 class Race < ActiveRecord::Base

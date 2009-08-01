@@ -1,19 +1,17 @@
 # == Schema Information
-# Schema version: 5
 #
 # Table name: people
 #
-#  id         :integer(11)   not null, primary key
-#  first_name :string(255)   
-#  last_name  :string(255)   
-#  age        :integer(11)   
-#  gender_id  :integer(11)   
-#  street     :string(255)   
-#  city       :string(255)   
-#  state      :string(255)   
-#  zip        :string(255)   
-#  race_id    :integer(11)   
-#  number     :integer(11)   
+#  id         :integer(11)     not null, primary key
+#  first_name :string(255)
+#  last_name  :string(255)
+#  age        :integer(11)
+#  gender_id  :integer(11)
+#  street     :string(255)
+#  city       :string(255)
+#  state      :string(255)
+#  zip        :string(255)
+#  number     :integer(11)
 #
 
 class Person < ActiveRecord::Base

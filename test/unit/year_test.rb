@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: years
+#
+#  id         :integer(11)     not null, primary key
+#  year       :integer(11)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'test_helper'
 
 class YearTest < ActiveSupport::TestCase

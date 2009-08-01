@@ -1,10 +1,9 @@
 # == Schema Information
-# Schema version: 5
 #
 # Table name: genders
 #
-#  id   :integer(11)   not null, primary key
-#  name :string(255)   
+#  id   :integer(11)     not null, primary key
+#  name :string(255)
 #
 
 class Gender < ActiveRecord::Base
