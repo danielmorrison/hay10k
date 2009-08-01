@@ -13,7 +13,11 @@
       <span class="postal-code"><%=h person.zip %></span>
       <div class="country-name"><%=h person.country %></div>
     </div>
-    <span class="note">2007 - <%=h person.race %></span>
+    <span class="note">
+      <%- person.races.each do |race| -%>
+        <%=h race.year %> - <%=h race %>
+      <%- end -%>
+    </span>
   </li>
   <%- end -%>
 </ul>

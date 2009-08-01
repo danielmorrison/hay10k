@@ -4,4 +4,8 @@ class Year < ActiveRecord::Base
   def to_param
     year
   end
+  
+  def to_s
+    year.to_s
+  end
 end

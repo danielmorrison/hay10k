@@ -23,7 +23,8 @@ class ReportsController < ApplicationController
   end
   
   def mailing
-    @races = Race.find(:all, :include => {:people => :gender})
+    year = Year.find_by_year(params[:id])
+    @races = year.races.find(:all, :include => {:people => :gender})
     respond_to do |format|
       format.html { render :layout => false }
       format.csv do
