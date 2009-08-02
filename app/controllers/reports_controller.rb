@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  skip_before_filter :find_race
+  skip_before_filter :find_year
   
   def race
     @race = Race.find(params[:id])

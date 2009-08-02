@@ -2,7 +2,7 @@
 
 <!--[form:person]-->
 <p><label for="person_race_id">Race</label><br/>
-<%= select :person, :race_id, Race.find_all_by_year_id(@year, :order => 'distance DESC').collect {|c| [ c.name, c.id ] } %></p>
+<%= select_tag 'race_id', options_for_select(@year.races.all(:order => 'distance DESC').collect {|c| [ c.name, c.id ] }) %></p>
 
 <p><label for="person_number">Number</label><br/>
 <%= text_field 'person', 'number', :size => 5  %></p>

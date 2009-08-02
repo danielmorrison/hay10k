@@ -5,7 +5,7 @@ class FinishesController < ApplicationController
   end
 
   def list
-    @finishes = Finish.find(:all, :order => 'place').select{|f| f.year.year == 2008 }
+    @finishes = Finish.find(:all, :order => 'place').select{|f| f.year == @year }
   end
 
   def show
@@ -21,7 +21,7 @@ class FinishesController < ApplicationController
     @finish.year = Year.find_by_year(Date.today.year)
     if @finish.save
       flash[:notice] = 'Finish was successfully created.'
-      redirect_to :action => 'list'
+      redirect_to year_finishes_path(@year)
     else
       render :action => 'new'
     end
@@ -37,9 +37,9 @@ class FinishesController < ApplicationController
     if params[:finish]['number']
       person = Person.find_by_number(params[:finish].delete('number'))
       
-      if person.nil? || !person.finish.nil?
+      if person.nil? || !person.finishes.nil?
         flash[:notice] = 'That number is incorrect'
-        redirect_to :action => 'list', :id => @finish and return
+        redirect_to year_finishes_path(@year)
       end
       
       params[:finish]['person_id'] = person.id 
@@ -47,10 +47,10 @@ class FinishesController < ApplicationController
   
     if @finish.update_attributes(params[:finish])
       flash[:notice] = 'Finish was successfully updated.'
-      redirect_to :action => 'list', :id => @finish
+      year_finishes_path(@year)
     else
       render :action => 'edit'
-    end
+    end    
   end
 
   def destroy

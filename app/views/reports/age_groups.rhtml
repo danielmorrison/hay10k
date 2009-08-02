@@ -4,7 +4,7 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Place</th>
+				<th>Overall Place</th>
 				<th>Time</th>
 				<th>Name</th>
 				<th>Hometown</th>
@@ -14,11 +14,11 @@
 		<tbody>
 	<% @race.overall_winners_for_gender(gender).each do |person| -%>
 	  <tr>
-  		<td class="right"><%=h person.place unless person.finish.nil? %></td>
-  		<td class="right"><%=h person.time unless person.finish.nil? %></td>
+			<td class="right"><%=h person.place(@race) unless person.finishes.for_race(@race).empty? %></td>
+			<td class="right"><%=h person.time(@race) unless person.finishes.for_race(@race).empty? %></td>
   		<td><%=h person.name %></td>
   		<td><%=h person.hometown %></td>
-  		<td><%=h person.readable_place_in_age_group %></td>
+  		<td><%=h person.readable_place_in_age_group(@race) %></td>
   	</tr>	
 	<% end -%>
 	</tbody>
@@ -33,7 +33,7 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Place</th>
+					<th>Overall Place</th>
 					<th>Time</th>
 					<th>Name</th>
 					<th>Hometown</th>
@@ -44,11 +44,11 @@
 		<% group.people.each do |person| -%>
 		  <% unless @race.overall_winners_for_gender(person.gender).include?(person) %>
 		  <tr>
-  			<td class="right"><%=h person.place unless person.finish.nil? %></td>
-  			<td class="right"><%=h person.time unless person.finish.nil? %></td>
+  			<td class="right"><%=h person.place(@race) unless person.finishes.for_race(@race).empty? %></td>
+  			<td class="right"><%=h person.time(@race) unless person.finishes.for_race(@race).empty? %></td>
   			<td><%=h person.name %></td>
   			<td><%=h person.hometown %></td>
-  			<td><%=h person.readable_place_in_age_group %></td>
+  			<td><%=h person.readable_place_in_age_group(@race) %></td>
   		</tr>	
   		<% end -%>
   	<% end -%>

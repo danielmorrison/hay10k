@@ -1,11 +1,11 @@
 <h1>Listing finishes</h1>
 
-<%= form_tag :action => 'create' %>
+<% form_for [@year, Finish.new] do |f| %>
   <fieldset>
 	<%= render :partial => 'form' %>
   </fieldset>
   <%= submit_tag "Create" %>
-</form>
+<% end %>
 
 
 <table>
@@ -22,10 +22,11 @@
     <td><%=h finish.send(column.name) %></td>
   <% end %>
 	<td>
-		<%= form_tag :action => 'update', :id => finish.id %>
+		<% form_for [@year, finish] do |f| %>
+		
 			<%= text_field :finish, :number, :size => 5, :value => finish.number %>
 		  <%= submit_tag "Update" %>
-		</form>
+		<% end %>
 	</td>
     <td><%= link_to 'Show', :action => 'show', :id => finish %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => finish %></td>

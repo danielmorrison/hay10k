@@ -19,7 +19,7 @@ class Race < ActiveRecord::Base
   end
   
   def age_distribution
-    people.find(:all, :select => 'age, COUNT(id) AS sum', :order => 'age', :group => 'age').each do |x|
+    people.find(:all, :select => 'age, COUNT(people.id) AS sum', :order => 'age', :group => 'age').each do |x|
       puts "#{x.age}: #{'*'*x.sum.to_i}"
     end
   end

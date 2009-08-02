@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :years do |years|
-    years.resources :people
+    years.resources :people, :finishes
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

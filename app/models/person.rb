@@ -16,7 +16,7 @@
 
 class Person < ActiveRecord::Base
   belongs_to  :gender
-  has_many :registrations
+  has_many :registrations, :dependent => :destroy
   has_many :races, :through => :registrations
   
   has_many  :finishes
@@ -30,7 +30,7 @@ class Person < ActiveRecord::Base
   
   validates_presence_of :city
   
-  acts_as_geocodable :address => {:street => :street, :locality => :city, :region => :state, :postal_code => :zip}
+  # acts_as_geocodable :address => {:street => :street, :locality => :city, :region => :state, :postal_code => :zip}
   
   def time(race)
     finishes.for_race(race).first ? finishes.for_race(race).first.time : ''
