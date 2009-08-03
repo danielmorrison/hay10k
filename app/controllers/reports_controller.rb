@@ -5,6 +5,10 @@ class ReportsController < ApplicationController
     @race = Race.find(params[:id])
     @people = @race.people.find(:all, :order => "finishes.place", :include => :finishes)
     
+    respond_to do |format|
+      format.html
+      format.txt
+    end
   end
   
   def numbers

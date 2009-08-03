@@ -1,0 +1,3 @@
+<%- @people.each do |person| -%>
+<%=h person.name %>, <%=h person.age %>, <%=h person.hometown %>, <%=h person.time(@race) unless person.finishes.for_race(@race).empty? %>
+<%- end -%>
