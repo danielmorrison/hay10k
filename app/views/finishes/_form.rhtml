@@ -1,9 +1,21 @@
-<% form_for [@year, @finish] do |f| %>
+<% form_for [@year, finish] do |f| %>
   <%= f.error_messages %>
 
-  <p><label for="finish_place">Place</label><br/>
-  <%= f.text_field 'place'  %></p>
+  <p><%= f.label :place %><br/>
+  <%= f.text_field :place, :size => 5  %></p>
 
-  <p><label for="finish_time">Time</label><br/>
-  <%= f.text_field 'time'  %></p>
+
+  <p><%= f.label :number %><br/>
+  <%= f.text_field :number, :size => 5  %></p>
+
+  <p><%= f.label :time %><br/>
+  <%= f.text_field :time, :size => 5  %>
+  <%= image_tag 'sync.gif', :id => "edit_finish_#{finish.id}_spinner", :style => 'display: none;' %>
+  <%= image_tag 'error.png', :id => "edit_finish_#{finish.id}_error", :style => 'display: none;' %>
+  </p>
 <% end %>
+
+<%= observe_form "edit_finish_#{finish.id}", :url => [@year, finish], :method => :put, 
+  :loading => "$('edit_finish_#{finish.id}_spinner').show(); $('edit_finish_#{finish.id}_error').hide();", 
+  :complete => "$('edit_finish_#{finish.id}_spinner').hide();",
+  :failure => "$('edit_finish_#{finish.id}_error').show();" %>

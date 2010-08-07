@@ -20,6 +20,7 @@ class Registration < ActiveRecord::Base
   
 private
   def build_finish
-    person.finishes.create!(:year => year)
+    place = year.finishes.last.try(:place) || 0
+    Finish.create!(:year => year, :place => place+1)
   end
 end

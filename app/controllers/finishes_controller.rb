@@ -3,13 +3,13 @@ class FinishesController < ApplicationController
     @finishes = Finish.find(:all, :order => 'place').select{|f| f.year == @year }
   end
 
-  def show
-    @finish = Finish.find(params[:id])
-  end
-
-  def new
-    @finish = Finish.new
-  end
+  # def show
+  #   @finish = Finish.find(params[:id])
+  # end
+  # 
+  # def new
+  #   @finish = Finish.new
+  # end
 
   def create
     @finish = Finish.new(params[:finish])
@@ -29,16 +29,21 @@ class FinishesController < ApplicationController
   def update
     @finish = Finish.find(params[:id])
     
-    if @finish.update_attributes(params[:finish])
-      flash[:notice] = 'Finish was successfully updated.'
-      year_finishes_path(@year)
-    else
-      render :action => 'edit'
-    end    
+    respond_to do |format|
+      if @finish.update_attributes(params[:finish])
+        flash[:notice] = 'Finish was successfully updated.'
+        year_finishes_path(@year)
+        format.html
+        format.js { head :ok }
+      else
+        format.html { render :action => 'edit' }
+        format.js { render :json => @finish.errors.full_messages, :status => 500}
+      end
+    end
   end
-
-  def destroy
-    Finish.find(params[:id]).destroy
-    redirect_to :action => 'index'
-  end
+  # 
+  # def destroy
+  #   Finish.find(params[:id]).destroy
+  #   redirect_to :action => 'index'
+  # end
 end
