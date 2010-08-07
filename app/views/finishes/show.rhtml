@@ -4,5 +4,5 @@
 </p>
 <% end %>
 
-<%= link_to 'Edit', :action => 'edit', :id => @finish %> |
-<%= link_to 'Back', :action => 'list' %>
+<%= link_to 'Edit', [:edit, @year, @finish] %> |
+<%= link_to 'Back', [@year, :finishes] %>

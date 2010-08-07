@@ -1,9 +1,6 @@
 <h1>Editing person</h1>
 
-<% form_for [@year, @person] do |f| %>
-  <%= render :partial => 'form' %>
-  <%= submit_tag 'Edit' %>
-<% end %>
+<%= render 'form' %>
 
-<%= link_to 'Show', :action => 'show', :id => @person %> |
-<%= link_to 'Back', :action => 'list' %>
+<%= link_to 'Show', [@year, @person] %> |
+<%= link_to 'Back', [@year, :people] %>

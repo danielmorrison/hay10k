@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html>
 <html>
 <head>
   <title><%= controller.action_name %></title>
@@ -51,10 +50,10 @@
 <h1><%=h @race.name %></h1>
 
 <p>
-	Pickford Hay Days • August 1, 2009<%#= Time.now.strftime("%B %d, %Y") %>
+	Pickford Hay Days • August 7, 2010<%#= Time.now.strftime("%B %d, %Y") %>
 </p>
 
-<%= @content_for_layout %>
+<%= yield %>
 
 </body>
 </html>

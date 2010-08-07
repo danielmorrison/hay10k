@@ -7,21 +7,21 @@
   <tr>
 	<th>Race</th>
 	<th>Gender</th>
-  <% for column in Person.content_columns %>
+  <% Person.content_columns.each do |column| %>
     <th><%= column.human_name %></th>
   <% end %>
   </tr>
   
-<% for person in @people %>
+<% @people.each do |person| %>
   <tr>
 	<td><strong><%=h person.races.last.name %></strong></td>
     <td><%=h person.gender.name %></td>
-  <% for column in Person.content_columns %>
+  <% Person.content_columns.each do |column| %>
     <td><%=h person.send(column.name) %></td>
   <% end %>
-    <td><%= link_to 'Show', :action => 'show', :id => person %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => person %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => person }, :confirm => 'Are you sure?', :post => true %></td>
+    <td><%= link_to 'Show', [@year, person] %></td>
+    <td><%= link_to 'Edit', [:edit, @year, person] %></td>
+    <td><%= link_to 'Destroy', [@year, person], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

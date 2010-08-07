@@ -1,10 +1,5 @@
 class FinishesController < ApplicationController
   def index
-    list
-    render :action => 'list'
-  end
-
-  def list
     @finishes = Finish.find(:all, :order => 'place').select{|f| f.year == @year }
   end
 
@@ -34,17 +29,6 @@ class FinishesController < ApplicationController
   def update
     @finish = Finish.find(params[:id])
     
-    if params[:finish]['number']
-      person = Person.find_by_number(params[:finish].delete('number'))
-      
-      if person.nil? || !person.finishes.nil?
-        flash[:notice] = 'That number is incorrect'
-        redirect_to year_finishes_path(@year)
-      end
-      
-      params[:finish]['person_id'] = person.id 
-    end
-  
     if @finish.update_attributes(params[:finish])
       flash[:notice] = 'Finish was successfully updated.'
       year_finishes_path(@year)
@@ -55,6 +39,6 @@ class FinishesController < ApplicationController
 
   def destroy
     Finish.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to :action => 'index'
   end
 end

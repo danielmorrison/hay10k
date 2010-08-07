@@ -1,10 +1,9 @@
-<%= error_messages_for 'finish' %>
+<% form_for [@year, @finish] do |f| %>
+  <%= f.error_messages %>
 
-<!--[form:finish]-->
-<p><label for="finish_place">Place</label><br/>
-<%= text_field 'finish', 'place'  %></p>
+  <p><label for="finish_place">Place</label><br/>
+  <%= f.text_field 'place'  %></p>
 
-<p><label for="finish_time">Time</label><br/>
-<%= text_field 'finish', 'time'  %></p>
-<!--[eoform:finish]-->
-
+  <p><label for="finish_time">Time</label><br/>
+  <%= f.text_field 'time'  %></p>
+<% end %>

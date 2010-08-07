@@ -1,0 +1,27 @@
+<h1>Listing finishes</h1>
+
+<table>
+  <tr>
+    <th>Place</th>
+    <th>Time</th>
+    <th>Number</th>
+    <th colspan=3></th>
+  </tr>
+  
+<% @finishes.each do |finish| %>
+  <% form_for [@year, finish] do |f| %>
+  <tr>
+    <td><%= f.text_field :place, :size => 5 %></td>
+    <td><%= f.text_field :time, :size => 5 %></td>
+    <td><%= f.text_field :number, :size => 5 %></td>
+    <td><%= f.submit "Update" %></td>
+    <td><%= link_to 'Edit', [:edit, @year, finish] %></td>
+    <td><%= link_to 'Destroy', [@year, finish], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New finish', [:new, @year, :finish] %>

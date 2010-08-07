@@ -15,4 +15,11 @@ class Registration < ActiveRecord::Base
   belongs_to :race
   belongs_to :person
   belongs_to :year
+  
+  after_create :build_finish
+  
+private
+  def build_finish
+    person.finishes.create!(:year => year)
+  end
 end

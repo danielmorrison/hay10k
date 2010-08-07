@@ -14,8 +14,13 @@
 require 'test_helper'
 
 class RegistrationTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+
+  def test_create_finish
+    @registration = Factory.build(:registration)
+    
+    assert_difference 'Finish.count', 1 do
+      @registration.save
+    end
   end
+
 end

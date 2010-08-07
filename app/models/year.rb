@@ -10,9 +10,10 @@
 
 class Year < ActiveRecord::Base
   has_many :races
+  has_many :finishes
   
   def to_param
-    year
+    year.to_s
   end
   
   def to_s

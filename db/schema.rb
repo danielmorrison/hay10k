@@ -1,5 +1,5 @@
 # This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of ActiveRecord to incrementally modify your database, and
+# please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
 # Note that this schema.rb definition is the authoritative source for your database schema. If you need
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(:version => 20080804215122) do
     t.string  "country"
   end
 
-  add_index "geocodes", ["query"], :name => "geocodes_query_index", :unique => true
-  add_index "geocodes", ["longitude"], :name => "geocodes_longitude_index"
   add_index "geocodes", ["latitude"], :name => "geocodes_latitude_index"
+  add_index "geocodes", ["longitude"], :name => "geocodes_longitude_index"
+  add_index "geocodes", ["query"], :name => "geocodes_query_index", :unique => true
 
   create_table "geocodings", :force => true do |t|
     t.integer "geocodable_id"
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(:version => 20080804215122) do
     t.string  "geocodable_type"
   end
 
+  add_index "geocodings", ["geocodable_id"], :name => "geocodings_geocodable_id_index"
   add_index "geocodings", ["geocodable_type"], :name => "geocodings_geocodable_type_index"
   add_index "geocodings", ["geocode_id"], :name => "geocodings_geocode_id_index"
-  add_index "geocodings", ["geocodable_id"], :name => "geocodings_geocodable_id_index"
 
   create_table "people", :force => true do |t|
     t.string  "first_name"
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20080804215122) do
     t.integer "year_id"
   end
 
-  add_index "races", ["name"], :name => "index_races_on_name"
   add_index "races", ["distance"], :name => "index_races_on_distance"
+  add_index "races", ["name"], :name => "index_races_on_name"
   add_index "races", ["year_id"], :name => "index_races_on_year_id"
 
   create_table "registrations", :force => true do |t|

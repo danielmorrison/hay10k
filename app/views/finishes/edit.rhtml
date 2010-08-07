@@ -1,9 +1,6 @@
 <h1>Editing finish</h1>
 
-<% form_for [@year, @finish] do |f| %>
-  <%= render :partial => 'form' %>
-  <%= submit_tag 'Edit' %>
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Show', :action => 'show', :id => @finish %> |
 <%= link_to 'Back', :action => 'list' %>

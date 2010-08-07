@@ -1,13 +1,13 @@
 <html>
 <head>
-  <title>Finishes: <%= controller.action_name %></title>
+  <title><%= controller.controller_name %>: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
 
 <p style="color: green"><%= flash[:notice] %></p>
 
-<%= @content_for_layout %>
+<%= yield %>
 
 </body>
 </html>

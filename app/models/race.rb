@@ -15,11 +15,11 @@ class Race < ActiveRecord::Base
   belongs_to :year
   
   def overall_winners_for_gender(gender)
-    people.find(:all, :limit => 3, :conditions => {:gender_id => gender}, :order => 'finishes.place', :include => :finishes)
+    people.all(:limit => 3, :conditions => {:gender_id => gender}, :order => 'finishes.place', :include => :finishes)
   end
   
   def age_distribution
-    people.find(:all, :select => 'age, COUNT(people.id) AS sum', :order => 'age', :group => 'age').each do |x|
+    people.all(:select => 'age, COUNT(people.id) AS sum', :order => 'age', :group => 'age').each do |x|
       puts "#{x.age}: #{'*'*x.sum.to_i}"
     end
   end

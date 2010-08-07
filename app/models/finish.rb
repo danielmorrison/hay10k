@@ -19,4 +19,10 @@ class Finish < ActiveRecord::Base
     person.blank? ? nil : person.number
   end
   
+  def number=(n)
+    if n.present?
+      self.person = Person.find_by_number(n)
+    end
+  end
+  
 end
