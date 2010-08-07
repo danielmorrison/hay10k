@@ -12,6 +12,7 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
   adapter: mysql
+  # database: hay10K_development
   database: hay10k_2007
   username: root
   password:

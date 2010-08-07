@@ -28,7 +28,7 @@ class ReportsController < ApplicationController
   
   def mailing
     year = Year.find_by_year(params[:id])
-    @races = year.races.find(:all, :include => {:people => :gender})
+    @races = year.races.find(:all, :conditions => 'distance > 2', :include => {:people => :gender})
     respond_to do |format|
       format.html { render :layout => false }
       format.csv do
