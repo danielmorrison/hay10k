@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   
   def race
     @race = Race.find(params[:id])
-    @people = @race.people.find(:all, :order => "finishes.place", :include => :finishes)
+    @people = @race.people.find(:all, :order => "finishes.time IS NOT NULL, finishes.place", :include => :finishes)
     
     respond_to do |format|
       format.html

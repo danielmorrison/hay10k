@@ -1,0 +1,15 @@
+form.edit_finish p {
+  display: block;
+  width: 7em;
+  float: left;
+  margin: .1em;
+}
+form.edit_finish label {
+  display: none;
+}
+form.edit_finish:first-child label {
+  display: block;
+}
+form.edit_finish {
+  clear: left;
+}

@@ -1,16 +1,7 @@
 <h1><%=h @year %> finishes</h1>
 
+<div id="finishes">
 <%- @finishes.each do |finish| -%>
   <%= render 'form', :finish => finish %>
 <%- end -%>
-
-<style>
-  form.edit_finish p {
-    display: block;
-    width: 7em;
-    float: left;
-  }
-  form.edit_finish {
-    clear: left;
-  }
-</style>
+</div>

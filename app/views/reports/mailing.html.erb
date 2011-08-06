@@ -1,6 +1,6 @@
 <h1>People as hCards</h1>
 
-<p><%= link_to 'download .vcf', "http://feeds.technorati.com/contact/#{controller.request.url}"%></p>
+<p><%= link_to 'download .vcf', "http://h2vx.com/vcf/#{controller.request.url}"%></p>
 
 <ul>
   <%- @races.map(&:people).flatten.each do |person| -%>

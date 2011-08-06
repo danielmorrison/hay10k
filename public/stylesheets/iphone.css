@@ -1,0 +1,36 @@
+
+form.edit_finish p {
+  display: block;
+  width: 25%;
+  float: left;
+  margin: .1em;
+}
+form.edit_finish label {
+  font-size: 50pt;  
+  line-height: 1.5;
+}
+
+form.edit_finish input {
+  font-size: 45pt;
+  width: 98%;
+}
+
+form.edit_finish .images {
+  width: 100px;
+  margin: 10px 0 0 60px;
+}
+
+form.edit_finish img {
+  width: 80px;  
+  height: 80px;  
+}
+
+form.edit_finish {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+form.edit_finish input {
+  font-size 30pt;
+}
