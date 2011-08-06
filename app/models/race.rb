@@ -20,8 +20,9 @@ class Race < ActiveRecord::Base
   
   def age_distribution
     people.all(:select => 'age, COUNT(people.id) AS sum', :order => 'age', :group => 'age').each do |x|
-      puts "#{x.age}: #{'*'*x.sum.to_i}"
+      puts "#{x.age}: #{'•'*x.sum.to_i}"
     end
+    true
   end
   
   def to_s

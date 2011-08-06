@@ -1,6 +1,10 @@
 class ReportsController < ApplicationController
   skip_before_filter :find_year
   
+  def index
+    render :layout => 'application'
+  end
+  
   def race
     @race = Race.find(params[:id])
     @people = @race.people.find(:all, :order => "finishes.time IS NOT NULL, finishes.place", :include => :finishes)

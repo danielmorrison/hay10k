@@ -8,6 +8,7 @@
 				<th>Time</th>
 				<th>Name</th>
 				<th>Hometown</th>
+				<th>Age</th>
 				<th> </th>
 			</tr>
 		</thead>
@@ -18,6 +19,7 @@
 			<td class="right"><%=h person.time(@race) unless person.finishes.for_race(@race).empty? %></td>
   		<td><%=h person.name %></td>
   		<td><%=h person.hometown %></td>
+  		<td class="right"><%=h person.age %></td>
   		<td><%=h person.readable_place_in_age_group(@race) %></td>
   	</tr>	
 	<% end -%>
@@ -37,6 +39,7 @@
 					<th>Time</th>
 					<th>Name</th>
 					<th>Hometown</th>
+					<th>Age</th>
 					<th> </th>
 				</tr>
 			</thead>
@@ -48,6 +51,7 @@
   			<td class="right"><%=h person.time(@race) unless person.finishes.for_race(@race).empty? %></td>
   			<td><%=h person.name %></td>
   			<td><%=h person.hometown %></td>
+  			<td class="right"><%=h person.age %></td>
   			<td><%=h person.readable_place_in_age_group(@race) %></td>
   		</tr>	
   		<% end -%>
