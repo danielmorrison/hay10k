@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
   
   def race
     @race = Race.find(params[:id])
-    @people = @race.people.find(:all, :order => "finishes.time IS NOT NULL, finishes.place", :include => :finishes)
+    @people = @race.people.order("finishes.time IS NOT NULL, finishes.place").includes(:finishes)
     
     respond_to do |format|
       format.html
@@ -17,22 +17,22 @@ class ReportsController < ApplicationController
   
   def numbers
     @race = Race.find(params[:id])
-    @people = @race.people.all(:order => 'number')
+    @people = @race.people.order('number')
   end
   
   def age_groups
     @race = Race.find(params[:id])
-    @age_groups = @race.age_groups.find(:all, :order => 'low, high, gender_id')
+    @age_groups = @race.age_groups.order('low, high, gender_id')
   end
   
   def map
     @race = Race.find :first
-    @people = Person.find(:all)
+    @people = Person.all
   end
   
   def mailing
     year = Year.find_by_year(params[:id])
-    @races = year.races.find(:all, :conditions => 'distance > 2', :include => {:people => :gender})
+    @races = year.races.where('distance > 2').includes({:people => :gender})
     respond_to do |format|
       format.html { render :layout => false }
       format.csv do

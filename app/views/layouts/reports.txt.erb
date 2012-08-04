@@ -1,4 +1,4 @@
 <%= @race.name %>
-Pickford Hay Days • August 6, 2011<%#= Time.now.strftime("%B %d, %Y") %>
+Pickford Hay Days • <%= @race.date ? @race.date.strftime("%B %d, %Y") : @race.year %>
 
 <%= yield %>

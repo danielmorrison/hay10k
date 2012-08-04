@@ -1,7 +1,7 @@
 class PeopleController < ApplicationController
     
   def index
-    @people = Person.all(:order => 'last_name, first_name').select{|p| p.races.first.year == @year}
+    @people = Person.order('last_name, first_name').all.select{|p| p.races.first.year == @year}
   end
 
   def show

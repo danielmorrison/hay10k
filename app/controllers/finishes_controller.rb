@@ -1,6 +1,6 @@
 class FinishesController < ApplicationController
   def index
-    @finishes = Finish.find(:all, :order => params[:order] || 'place').select{|f| f.year == @year }
+    @finishes = Finish.order(params[:order] || 'place').all.select{|f| f.year == @year }
   end
 
   # def show

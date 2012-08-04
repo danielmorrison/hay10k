@@ -13,8 +13,8 @@ class AgeGroup < ActiveRecord::Base
   belongs_to  :gender
   belongs_to  :race
   
-  validates_presence_of :low, :high, :gender, :race
-  validates_numericality_of :low, :high
+  validates :low, :high, :gender, :race, :presence => true
+  validates :low, :high, :numericality => true
     
   def name
     if low == 0
@@ -29,7 +29,7 @@ class AgeGroup < ActiveRecord::Base
   end
   
   def people
-    race.people.find(:all, :conditions => [':low <= age AND :high >= age AND gender_id = :gender', {:low => self.low, :high => self.high, :gender => self.gender_id}], :order => "finishes.place", :include => :finishes)
+    race.people.where([':low <= age AND :high >= age AND gender_id = :gender', {:low => self.low, :high => self.high, :gender => self.gender_id}]).order("finishes.place").includes(:finishes)
   end
   
 end

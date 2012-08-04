@@ -21,14 +21,13 @@ class Person < ActiveRecord::Base
   
   has_many  :finishes
   
-  validates_presence_of :first_name
-  validates_presence_of :last_name
+  validates :first_name, :presence => true
+  validates :last_name, :presence => true
   
-  validates_presence_of :gender
-  validates_presence_of :age
-  validates_numericality_of :age
+  validates :gender, :presence => true
+  validates :age, :presence => true, :numericality => true
   
-  validates_presence_of :city
+  validates :city, :presence => true
   
   # acts_as_geocodable :address => {:street => :street, :locality => :city, :region => :state, :postal_code => :zip}
   
@@ -37,7 +36,7 @@ class Person < ActiveRecord::Base
   end
   
   def place(race)
-    people = race.people.find(:all, :order => "finishes.place", :include => :finishes)
+    people = race.people.order("finishes.place").includes(:finishes)
     rank_in_group(people, race)
   end
   
@@ -77,8 +76,8 @@ class Person < ActiveRecord::Base
   end
   
   def age_group(race)
-    race.age_groups.find(:first, 
-      :conditions => ['low <= :age AND high >= :age AND gender_id = :gender', {:age => self.age, :gender => self.gender_id}])
+    race.age_groups.where( 
+      ['low <= :age AND high >= :age AND gender_id = :gender', {:age => self.age, :gender => self.gender_id}]).first
   end
   
 private

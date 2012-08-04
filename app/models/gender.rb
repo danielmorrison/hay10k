@@ -10,9 +10,9 @@ class Gender < ActiveRecord::Base
   has_many  :people
   has_many  :age_groups
   
-  validates_uniqueness_of :name
+  validates :name, :uniqueness => true
   
-  default_scope :order => 'name DESC'
+  default_scope order('name DESC')
   
   def self.male
     Gender.find_or_create_by_name('Men')
