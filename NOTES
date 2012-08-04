@@ -1,3 +1,16 @@
+2012 Notes
+
+* 2K backed up registration tables. Separate them and have a separate table for that?
+* Way more Women's medium shirts
+
+Need a chute. badly.
+Need recovery mechanism for missing data.
+Data entry was good but no need to edit "place" field since it isn't used.
+Use something other than : to get a number pad?
+
+Network. extend wifi range or bring a real AP. Makes (re)connection easier. MiFI?
+
+
 FIXME
 
 * Deleting a person doesn't delete the Finish. (always ensure the right number are present)
