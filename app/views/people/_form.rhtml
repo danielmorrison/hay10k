@@ -6,7 +6,7 @@
   <%= select_tag 'race_id', options_from_collection_for_select(@year.races.all(:order => 'distance DESC'), :id, :name, (@person.races.last.nil? ? nil : @person.races.last.id) ) %></p>
 
   <p><label for="person_number">Number</label><br/>
-  <%= f.text_field 'number', :size => 5  %></p>
+  <%= f.number_field 'number', :size => 5  %></p>
 
   <p><label for="person_first_name">First name</label><br/>
   <%= f.text_field 'first_name'  %></p>
@@ -15,7 +15,7 @@
   <%= f.text_field 'last_name'  %></p>
 
   <p><label for="person_age">Age</label><br/>
-  <%= f.text_field 'age', :size => 3  %></p>
+  <%= f.number_field 'age', :size => 3  %></p>
 
   <p><label for="person_gender_id">Gender</label><br/>
   <%= f.select :gender_id, Gender.all.map {|c| [ c.name, c.id ] } %></p>
