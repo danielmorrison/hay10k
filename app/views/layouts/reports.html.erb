@@ -56,7 +56,7 @@
 <h1><%=h @race %></h1>
 
 <p>
-	Pickford Hay Days • August 6, 2011<%#= Time.now.strftime("%B %d, %Y") %>
+	Pickford Hay Days • <%= @race.date ? @race.date.strftime("%B %d, %Y") : @race.year %>
 </p>
 
 <%= yield %>

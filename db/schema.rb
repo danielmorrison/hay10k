@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080804215122) do
+ActiveRecord::Schema.define(:version => 20120804035024) do
 
   create_table "age_groups", :force => true do |t|
     t.integer "low"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20080804215122) do
     t.string  "name"
     t.integer "distance"
     t.integer "year_id"
+    t.date    "date"
   end
 
   add_index "races", ["distance"], :name => "index_races_on_distance"
