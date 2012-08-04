@@ -5,5 +5,5 @@ Hay10k::Application.routes.draw do
     match 'reports/:action', :controller => :reports
   end
   
-  root :to => 'finishes#indes', :year_id => Time.now.year
+  root :to => 'finishes#index', :year_id => Time.now.year
 end
