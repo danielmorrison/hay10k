@@ -1,4 +1,5 @@
 .svn
-.rake_tasks
-*.db
-*.log
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/

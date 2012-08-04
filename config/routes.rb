@@ -1,9 +1,9 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :years do |years|
-    years.resources :people, :finishes
+Hay10k::Application.routes.draw do
+  resources :years do
+    resources :people, :finishes
+    match 'reports', :controller => :reports, :action => 'index'
+    match 'reports/:action', :controller => :reports
   end
   
-  map.root :controller => :finishes, :year_id => Time.now.year
-  
-  map.connect 'years/:year_id/reports/:action', :controller => 'reports'
+  root :to => 'finishes#indes', :year_id => Time.now.year
 end
