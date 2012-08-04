@@ -10,6 +10,7 @@
   <%- if protect_against_forgery? -%>
     <meta name="authenticity-token" id="authenticity-token" content="<%=h form_authenticity_token %>">
   <%- end -%>
+  <%= csrf_meta_tag %>
 </head>
 <body>
 
