@@ -29,4 +29,8 @@ class Race < ActiveRecord::Base
   def to_s
     name
   end
+
+  def short_name
+    "#{distance}k"
+  end
 end
