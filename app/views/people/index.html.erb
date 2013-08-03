@@ -1,4 +1,4 @@
-<h1>Listing people</h1>
+<h1><%= pluralize @people.size, 'Runner' %></h1>
 
 <%= link_to 'New person', :action => 'new' %>
 <br />

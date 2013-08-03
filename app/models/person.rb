@@ -63,6 +63,11 @@ class Person < ActiveRecord::Base
     end
   end
   
+  def city=(string)
+    string = "Sault Ste. Marie" if string.upcase == "SSM"
+    self[:city] = string
+  end
+  
   def name
     "#{first_name} #{last_name}"
   end

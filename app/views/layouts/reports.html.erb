@@ -51,12 +51,10 @@
 </head>
 <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
-
 <h1><%=h @race %></h1>
 
 <p>
-	Pickford Hay Days • <%= @race.date ? @race.date.strftime("%B %d, %Y") : @race.year %>
+	Pickford Hay Days • <%= @race.date ? @race.date.strftime("%B %e, %Y") : @race.year %>
 </p>
 
 <%= yield %>

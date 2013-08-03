@@ -20,8 +20,8 @@
   <p><label for="person_gender_id">Gender</label><br/>
   <%= f.select :gender_id, Gender.all.map {|c| [ c.name, c.id ] } %></p>
 
-  <p><label for="person_street">Street</label><br/>
-  <%= f.text_field 'street'  %></p>
+  <!-- <p><label for="person_street">Street</label><br/>
+  <%= f.text_field 'street'  %></p> -->
 
   <p><label for="person_city">City</label><br/>
   <%= f.text_field 'city'  %></p>
@@ -29,8 +29,8 @@
   <p><label for="person_state">State</label><br/>
   <%= f.text_field 'state'  %></p>
 
-  <p><label for="person_zip">Zip</label><br/>
-  <%= f.text_field 'zip'  %></p>
+  <!-- <p><label for="person_zip">Zip</label><br/>
+  <%= f.text_field 'zip'  %></p> -->
   <!--[eoform:person]-->
 
   <%= f.submit %>

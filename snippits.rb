@@ -4,12 +4,7 @@ twoK_groups = [
 {:low => 7, :high => 8  },
 {:low => 9, :high => 10 },
 {:low => 11, :high => 12},
-{:low => 13, :high => 19},
-{:low => 20, :high => 29},
-{:low => 30, :high => 39},
-{:low => 40, :high => 49},
-{:low => 50, :high => 59},
-{:low => 60, :high => 99},
+{:low => 13, :high => 99},
 ]
 
 # 5 & 10k
@@ -25,7 +20,7 @@ fiveK_groups = [
 
 
 # Ok, let's setup a new year
-date = Date.new(2012, 8, 4)
+date = Date.new(2013, 8, 3)
 year = Year.find_or_create_by_year(date.year)
 [10, 5, 2].each do |distance|
   race = year.races.find_or_create_by_name("Hay #{distance}k")
