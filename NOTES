@@ -10,9 +10,13 @@ Use something other than : to get a number pad?
 
 Network. extend wifi range or bring a real AP. Makes (re)connection easier. MiFI?
 
+build "fun facts"
+* gender & age counts
+* distances
+* 
 
-FIXME
 
+2011
 * Deleting a person doesn't delete the Finish. (always ensure the right number are present)
 ** Maybe have a way to say DNF?
 * can't run report until all runners are in. Need to sort them at the bottom. Thought we fixed this, but nope.

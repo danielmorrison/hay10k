@@ -8,6 +8,8 @@ class ReportsController < ApplicationController
   def race
     @race = Race.find(params[:id])
     @people = @race.people.order("finishes.time IS NOT NULL, finishes.place").includes(:finishes)
+    # @finished = @race.people.order("finishes.time IS NOT NULL, finishes.place").includes(:finishes)
+    # @not_finished = @race.people - @finished
     
     respond_to do |format|
       format.html

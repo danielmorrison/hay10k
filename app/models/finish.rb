@@ -23,7 +23,7 @@ class Finish < ActiveRecord::Base
   
   def number=(n)
     if n.present?
-      self.person = Person.find_by_number(n)
+      self.person = year.people.find_by_number(n)
       self.errors.add(:person_id, 'invalid person_id') if person.blank?
     end
   end

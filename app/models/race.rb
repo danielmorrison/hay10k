@@ -16,7 +16,7 @@ class Race < ActiveRecord::Base
   belongs_to :year
   
   def overall_winners_for_gender(gender)
-    people.all(:limit => 3, :conditions => {:gender_id => gender}, :order => 'finishes.place', :include => :finishes)
+    people.all(:limit => 1, :conditions => {:gender_id => gender}, :order => 'finishes.place', :include => :finishes)
   end
   
   def age_distribution
