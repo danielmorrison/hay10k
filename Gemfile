@@ -1,4 +1,4 @@
-source :rubygems
+source "https://rubygems.org"
 gem 'rails', '~> 3.0.0'
 gem 'mysql2', "~> 0.2.7"
 # gem 'acts_as_geocodable', '1.0.4'
