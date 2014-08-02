@@ -1,37 +1,37 @@
 class ReportsController < ApplicationController
   skip_before_filter :find_year
-  
+
   def index
     render :layout => 'application'
   end
 
   def race
     @race = Race.find(params[:id])
-    @people = @race.people.order("finishes.time IS NOT NULL, finishes.place").includes(:finishes)
-    # @finished = @race.people.order("finishes.time IS NOT NULL, finishes.place").includes(:finishes)
-    # @not_finished = @race.people - @finished
-    
+    # @people = @race.people.order("finishes.time IS NOT NULL, finishes.place").includes(:finishes)
+    @finished = @race.people.where("finishes.time IS NOT NULL AND finishes.place IS NOT NULL").order("finishes.place").includes(:finishes)
+    @not_finished = @race.people - @finished
+
     respond_to do |format|
       format.html
       format.txt
     end
   end
-  
+
   def numbers
     @race = Race.find(params[:id])
     @people = @race.people.order('number')
   end
-  
+
   def age_groups
     @race = Race.find(params[:id])
     @age_groups = @race.age_groups.order('low, high, gender_id')
   end
-  
+
   def map
     @race = Race.find :first
     @people = Person.all
   end
-  
+
   def mailing
     year = Year.find_by_year(params[:id])
     @races = year.races.where('distance > 2').includes({:people => :gender})

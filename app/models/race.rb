@@ -14,18 +14,18 @@ class Race < ActiveRecord::Base
   has_many  :people, :through => :registrations
   has_many  :age_groups
   belongs_to :year
-  
+
   def overall_winners_for_gender(gender)
-    people.all(:limit => 1, :conditions => {:gender_id => gender}, :order => 'finishes.place', :include => :finishes)
+    people.finished.all(:limit => 1, :conditions => {:gender_id => gender}, :order => 'finishes.place', :include => :finishes)
   end
-  
+
   def age_distribution
     people.all(:select => 'age, COUNT(people.id) AS sum', :order => 'age', :group => 'age').each do |x|
       puts "#{x.age}: #{'•'*x.sum.to_i}"
     end
     true
   end
-  
+
   def to_s
     name
   end

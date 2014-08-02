@@ -84,4 +84,4 @@ DEPENDENCIES
   dynamic_form
   mysql2 (~> 0.2.7)
   prototype_legacy_helper (= 0.0.0)!
-  rails (~> 3.0.0)
+  rails (~> 3.0.16)

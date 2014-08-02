@@ -21,7 +21,7 @@
   		<td><%=h person.hometown %></td>
   		<td class="right"><%=h person.age %></td>
   		<td><%=h person.readable_place_in_age_group(@race) %></td>
-  	</tr>	
+  	</tr>
 	<% end -%>
 	</tbody>
 	</table>
@@ -29,7 +29,7 @@
 <% end -%>
 
 <% @age_groups.each do |group| -%>
-	<% unless group.people.empty? %>
+	<% unless group.people.finished.empty? %>
 		<h2><%=h group.name %></h2>
 
 		<table>
@@ -44,7 +44,7 @@
 				</tr>
 			</thead>
 			<tbody>
-		<% group.people.each do |person| -%>
+		<% group.people.finished.each do |person| -%>
 		  <% unless @race.overall_winners_for_gender(person.gender).include?(person) %>
 		  <tr>
   			<td class="right"><%=h person.place(@race) unless person.finishes.for_race(@race).empty? %></td>
@@ -53,7 +53,7 @@
   			<td><%=h person.hometown %></td>
   			<td class="right"><%=h person.age %></td>
   			<td><%=h person.readable_place_in_age_group(@race) %></td>
-  		</tr>	
+  		</tr>
   		<% end -%>
   	<% end -%>
 		</tbody>

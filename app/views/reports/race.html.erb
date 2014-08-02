@@ -9,14 +9,24 @@
 		</tr>
 	</thead>
 	<tbody>
-<% @people.each do |person| -%>
+<% @finished.each do |person| -%>
 <tr>
 	<td class="right"><%=h person.place(@race) unless person.finishes.for_race(@race).empty? %></td>
 	<td class="right"><%=h person.time(@race) unless person.finishes.for_race(@race).empty? %></td>
 	<td><%=h person.name %></td>
 	<td><%=h person.hometown %></td>
 	<td><%=h person.readable_place_in_age_group(@race) %></td>
-</tr>	
+</tr>
+<% end -%>
+
+<% @not_finished.each do |person| -%>
+<tr>
+	<td class="right">TBD</td>
+	<td class="right"></td>
+	<td><%=h person.name %></td>
+	<td><%=h person.hometown %></td>
+	<td><%=h person.readable_place_in_age_group(@race) %></td>
+</tr>
 <% end -%>
 </tbody>
 </table>

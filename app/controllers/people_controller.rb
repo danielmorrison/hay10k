@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-    
+
   def index
     @people = Person.order('last_name, first_name').all.select{|p| p.races.first.year == @year}
   end
@@ -31,7 +31,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     if @person.update_attributes(params[:person])
       @person.registrations.find_by_year_id!(@year.id).update_attribute(:race_id, params[:race_id])
-      
+
       flash[:notice] = 'Person was successfully updated.'
       redirect_to year_people_path(@year)
     else
