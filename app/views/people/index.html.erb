@@ -7,18 +7,24 @@
   <tr>
 	<th>Race</th>
 	<th>Gender</th>
-  <% Person.content_columns.each do |column| %>
-    <th><%= column.human_name %></th>
-  <% end %>
-  </tr>
-  
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>Age</th>
+	<th>City</th>
+	<th>State</th>
+	<th>Number</th>
+</tr>
+
 <% @people.each do |person| %>
   <tr>
 	<td><strong><%=h person.races.last.name %></strong></td>
     <td><%=h person.gender.name %></td>
-  <% Person.content_columns.each do |column| %>
-    <td><%=h person.send(column.name) %></td>
-  <% end %>
+    <td><%=h person.first_name %></td>
+    <td><%=h person.last_name %></td>
+    <td><%=h person.age %></td>
+    <td><%=h person.city %></td>
+    <td><%=h person.state %></td>
+    <td><%=h person.number %></td>
     <td><%= link_to 'Show', [@year, person] %></td>
     <td><%= link_to 'Edit', [:edit, @year, person] %></td>
     <td><%= link_to 'Destroy', [@year, person], :confirm => 'Are you sure?', :method => :delete %></td>
