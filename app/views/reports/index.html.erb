@@ -1,14 +1,20 @@
 <h1>Reports</h1>
 
-<% Year.all.each do |year| %>
+<% Year.order("year DESC").each do |year| %>
   <h2><%= year %></h2>
-  
-  <% %w(race numbers age_groups).each do |report| %>
-    <h3><%= report.humanize %></h3>
-    <ul>
-      <% year.races.each do |race| %>
-        <li><%= link_to race, :controller => 'reports', :action => report, :id => race.id %></li>
+
+  <table>
+    <tr>
+      <% %w(race numbers age_groups).each do |report| %>
+        <td style="padding-right: 2em">
+          <h3><%= report.humanize %></h3>
+
+          <% year.races.each do |race| %>
+            <%= link_to race, :controller => 'reports', :action => report, :id => race.id %><br>
+          <% end %>
+
+        </td>
       <% end %>
-    </ul>
-  <% end %>
+    </tr>
+  </table>
 <% end %>
