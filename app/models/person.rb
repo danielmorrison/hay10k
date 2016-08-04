@@ -38,7 +38,7 @@ class Person < ActiveRecord::Base
   end
 
   def place(race)
-    people = race.people.order("finishes.place").includes(:finishes)
+    people = race.people.finished.order("finishes.place").includes(:finishes)
     rank_in_group(people, race)
   end
 

@@ -3,7 +3,7 @@
 
   <!--[form:person]-->
   <p><label for="person_race_id">Race</label><br/>
-  <%= select_tag 'race_id', options_from_collection_for_select(@year.races.all(:order => 'distance DESC'), :id, :short_name, (@person.races.last.nil? ? nil : @person.races.last.id) ) %></p>
+  <%= select_tag 'race_id', options_from_collection_for_select(@year.races.all(:order => 'distance DESC'), :id, :short_name, (@person.races.last.nil? ? nil : @person.races.last.id))  %></p>
 
   <p><label for="person_number">Number</label><br/>
   <%= f.number_field 'number', :size => 5  %></p>
