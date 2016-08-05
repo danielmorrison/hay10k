@@ -3,7 +3,7 @@
 <head>
   <title><%= controller.action_name %></title>
   <%= stylesheet_link_tag 'reports', :media => 'all' %>
-  <%= javascript_include_tag :defaults %>
+  <%#= javascript_include_tag :defaults %>
   <%= javascript_include_tag 'mapstraction/mapstraction' if @map %>
   <%- if params[:refresh] -%>
     <script>
