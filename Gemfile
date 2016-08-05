@@ -2,14 +2,12 @@ source "https://rubygems.org"
 
 ruby "2.1.10"
 
-gem 'rails', '~> 3.2.21'
+gem 'rails', '~> 4.0.0'
 gem 'pg'
 
-group :assets do
-  gem 'sass-rails',   '~> 3.2.6'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'uglifier',     '>= 1.0.3'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 gem 'jquery-rails'
 

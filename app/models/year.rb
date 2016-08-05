@@ -13,11 +13,11 @@ class Year < ActiveRecord::Base
   has_many :finishes
   has_many :registrations
   has_many :people, :through => :registrations
-  
+
   def to_param
     year.to_s
   end
-  
+
   def to_s
     year.to_s
   end

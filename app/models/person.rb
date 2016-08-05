@@ -29,7 +29,9 @@ class Person < ActiveRecord::Base
 
   validates :city, :presence => true
 
-  scope :finished, joins(:finishes).where("finishes.time IS NOT NULL AND finishes.place IS NOT NULL").includes(:finishes)
+  scope :finished,  -> {
+    joins(:finishes).where("finishes.time IS NOT NULL AND finishes.place IS NOT NULL").includes(:finishes)
+  }
 
   # acts_as_geocodable :address => {:street => :street, :locality => :city, :region => :state, :postal_code => :zip}
 

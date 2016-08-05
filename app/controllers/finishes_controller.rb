@@ -1,12 +1,12 @@
 class FinishesController < ApplicationController
   def index
-    @finishes = Finish.order(params[:order] || 'place').all.select{|f| f.year == @year }
+    @finishes = Finish.order(params[:order] || 'place').load.select{|f| f.year == @year }
   end
 
   # def show
   #   @finish = Finish.find(params[:id])
   # end
-  # 
+  #
   # def new
   #   @finish = Finish.new
   # end
@@ -28,7 +28,7 @@ class FinishesController < ApplicationController
 
   def update
     @finish = Finish.find(params[:id])
-    
+
     respond_to do |format|
       if @finish.update_attributes(params[:finish])
         flash[:notice] = 'Finish was successfully updated.'
@@ -41,7 +41,7 @@ class FinishesController < ApplicationController
       end
     end
   end
-  # 
+  #
   # def destroy
   #   Finish.find(params[:id]).destroy
   #   redirect_to :action => 'index'
