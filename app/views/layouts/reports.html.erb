@@ -3,7 +3,8 @@
 <head>
   <title><%= controller.action_name %></title>
   <%= stylesheet_link_tag 'reports', :media => 'all' %>
-  <%= javascript_include_tag :defaults, 'mapstraction/mapstraction' %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'mapstraction/mapstraction' if @map %>
   <%- if params[:refresh] -%>
     <script>
       // Sad hack for refreshing content
@@ -12,7 +13,7 @@
   <%- end -%>
   <% if @map -%>
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<%= GOOGLE_MAPS_API_KEY %>" type="text/javascript"></script>
-    
+
     <script type="text/javascript">
       function loadLocationMap(map) {
         var points = [];
@@ -23,29 +24,29 @@
           // display the map centered on a latitude and longitude (Google zoom levels)
           <% if index == 0 %>map.setCenterAndZoom(points[0], 4);<% end %>
 
-          // create a marker positioned at a lat/lon 
+          // create a marker positioned at a lat/lon
           markers[<%= index %>] = new Marker(points[<%= index %>]);
           // add info bubble to the marker
           markers[<%= index %>].setInfoBubble("<%=h person.name %><br /><%=h person.city %>");
 
-          // display marker 
+          // display marker
           map.addMarker(markers[<%= index %>]);
         <% end %>
-                
+
       }
-      
-      
+
+
       Event.observe(window, 'load', function() {
 
         var mapstraction = new Mapstraction('map','google');
         loadLocationMap(mapstraction);
         mapstraction.addControls({
-            pan: true, 
+            pan: true,
             zoom: 'small',
-            map_type: true 
+            map_type: true
         });
       });
-      
+
     </script>
   <% end -%>
 </head>

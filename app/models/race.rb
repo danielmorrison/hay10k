@@ -16,7 +16,7 @@ class Race < ActiveRecord::Base
   belongs_to :year
 
   def overall_winners_for_gender(gender)
-    people.finished.where(gender_id: gender).order('finishes.place').includes(:finishes).first
+    people.finished.where(gender_id: gender).order('finishes.place').includes(:finishes).limit(1)
   end
 
   def age_distribution
