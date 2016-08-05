@@ -1,4 +1,4 @@
-Hay10k::Application.routes.draw do
+Rails.application.routes.draw do
   resources :years do
     resources :people, :finishes
     resource :activity
@@ -6,5 +6,5 @@ Hay10k::Application.routes.draw do
     get 'reports/:action', :controller => :reports
   end
 
-  root to: 'finishes#index', year_id: Time.now.year
+  root 'finishes#index', year_id: Time.now.year
 end
