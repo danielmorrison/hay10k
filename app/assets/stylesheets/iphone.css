@@ -6,7 +6,7 @@ form.edit_finish p {
   margin: .1em;
 }
 form.edit_finish label {
-  font-size: 50pt;  
+  font-size: 50pt;
   line-height: 1.5;
 }
 
@@ -21,8 +21,8 @@ form.edit_finish .images {
 }
 
 form.edit_finish img {
-  width: 80px;  
-  height: 80px;  
+  width: 80px;
+  height: 80px;
 }
 
 form.edit_finish {
@@ -32,5 +32,5 @@ form.edit_finish {
 }
 
 form.edit_finish input {
-  font-size 30pt;
+  font-size: 30pt;
 }
