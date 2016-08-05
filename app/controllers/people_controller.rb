@@ -1,7 +1,7 @@
 class PeopleController < ApplicationController
 
   def index
-    @people = Person.order('last_name, first_name').load.select{|p| p.races.first.year == @year}
+    @people = Person.joins(registrations: :year).includes(:gender, :races).where(years: {year: @year.year}).order('last_name, first_name')
   end
 
   def show
