@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  http_basic_authenticate_with name: ENV["AUTH_USERNAME"], password: ENV["AUTH_PASSWORD"]
+
   config.relative_url_root = "" # see https://github.com/rails/rails/issues/9619
 
   helper :all # include all helpers, all the time
