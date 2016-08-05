@@ -1,4 +1,4 @@
-if RAILS_ENV == 'production' 
+if Rails.env.production?
   # API Key for h
   GOOGLE_MAPS_API_KEY = ''
 else
