@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Hay10k::Application.config.secret_key_base = '2f8df0622dad7d47ffcac002090fddb68826a46f1c9d3cf6cf59bb254f8b88351024f9f8e4ac127ca5a25fc5f8aed99b22b934f378220a2b0183fd705e5cb3e5'
+Hay10k::Application.config.secret_key_base = '24be20f8be29a810e26ad2820f6ec52abfccfea0eea3135f30fdacf50f1ae1bcc3af5edffae48930559a27a517b3f63ab5bd4546be4f78a6d42315af1c520af0'
