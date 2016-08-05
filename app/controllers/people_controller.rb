@@ -13,7 +13,7 @@ class PeopleController < ApplicationController
   end
 
   def create
-    @person = Person.new(params[:person])
+    @person = Person.new(person_params)
     @person.registrations.build(:year => @year, :race_id => params[:race_id])
     if @person.save
       flash[:notice] = 'Person was successfully created.'
@@ -29,7 +29,7 @@ class PeopleController < ApplicationController
 
   def update
     @person = Person.find(params[:id])
-    if @person.update_attributes(params[:person])
+    if @person.update_attributes(person_params)
       @person.registrations.find_by_year_id!(@year.id).update_attribute(:race_id, params[:race_id])
 
       flash[:notice] = 'Person was successfully updated.'
@@ -42,5 +42,11 @@ class PeopleController < ApplicationController
   def destroy
     Person.find(params[:id]).destroy
     redirect_to :action => 'index'
+  end
+
+  private
+
+  def person_params
+    params.require(:person).permit(:number, :first_name, :last_name, :age, :gender_id, :city, :state, )
   end
 end
