@@ -2,7 +2,7 @@ source "https://rubygems.org"
 # ruby 2 and rails 3.0 don't play nice :(
 ruby "1.9.3"
 gem 'rails', '~> 3.0.16'
-gem 'mysql2', "~> 0.2.7"
+gem 'pg'
 # gem 'acts_as_geocodable', '1.0.4'
 # gem 'graticule', '1.0.0.pre2'
 
