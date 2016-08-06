@@ -17,6 +17,3 @@ gem "rails_12factor", group: :production
 
 # gem 'acts_as_geocodable', '1.0.4'
 # gem 'graticule', '1.0.0.pre2'
-
-gem 'prototype_legacy_helper', '0.0.0', :git => 'git://github.com/rails/prototype_legacy_helper.git'
-gem 'dynamic_form'
