@@ -13,5 +13,11 @@
 
 <%= yield %>
 
+<nav>
+  <%= link_to_unless_current "Registration", year_people_path(@year || Year.order(year: :desc).first) %> |
+  <%= link_to_unless_current "Finish Line", year_finishes_path(@year || Year.order(year: :desc).first) %> |
+  <%= link_to_unless_current "Reports", reports_path %> |
+</nav>
+
 </body>
 </html>

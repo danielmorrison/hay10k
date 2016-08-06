@@ -10,7 +10,7 @@
           <h3><%= report.humanize %></h3>
 
           <% year.races.each do |race| %>
-            <%= link_to race, :controller => 'reports', :action => report, :id => race.id %><br>
+            <%= link_to race, controller: 'reports', action: report, id: race.id, year_id: year.year %><br>
           <% end %>
 
         </td>

@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     get 'reports/:action', :controller => :reports
   end
 
+  resources :reports, only: :index
+  get 'reports/:action/:race_id', :controller => :reports
+
   root 'finishes#index', year_id: Time.now.year
 end
