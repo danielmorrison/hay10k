@@ -1,0 +1,4 @@
+$('#edit_finish_<%= @finish.id %>_spinner').hide();
+<% if @finish.errors.any? %>
+  $('#edit_finish_<%= @finish.id %>_error').show().prop("title", "<%= escape_javascript @finish.errors.full_messages.to_sentence %>");
+<% end %>

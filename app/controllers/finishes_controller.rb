@@ -30,14 +30,14 @@ class FinishesController < ApplicationController
     @finish = Finish.find(params[:id])
 
     respond_to do |format|
-      if @finish.update_attributes(params[:finish])
+      if @finish.update(finish_params)
         flash[:notice] = 'Finish was successfully updated.'
         year_finishes_path(@year)
         format.html
-        format.js { head :ok }
+        format.js
       else
-        format.html { render :action => 'edit' }
-        format.js { render :json => @finish.errors.full_messages, :status => 500}
+        format.html { render 'edit' }
+        format.js
       end
     end
   end
@@ -46,4 +46,9 @@ class FinishesController < ApplicationController
   #   Finish.find(params[:id]).destroy
   #   redirect_to :action => 'index'
   # end
+
+  private
+  def finish_params
+    params.require(:finish).permit(:place, :time, :number)
+  end
 end
