@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
     render :layout => 'application'
   end
 
-  def race
+  def results
     @race = Race.find(params[:id])
     # @people = @race.people.order("finishes.time IS NOT NULL, finishes.place").includes(:finishes)
     @finished = @race.people.where("finishes.time IS NOT NULL AND finishes.place IS NOT NULL").order("finishes.place").includes(:finishes)
