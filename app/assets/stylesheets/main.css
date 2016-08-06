@@ -13,3 +13,10 @@ form.edit_finish:first-child label {
 form.edit_finish {
   clear: left;
 }
+
+input#finish_time {
+  width: 7em;
+}
+input#finish_number {
+  width: 5em;
+}
