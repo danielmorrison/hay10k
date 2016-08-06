@@ -11,6 +11,7 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 
+gem "honeybadger"
 gem "puma"
 gem "rails_12factor", group: :production
 
