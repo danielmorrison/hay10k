@@ -20,13 +20,11 @@ class ReportsController < ApplicationController
   end
 
   def numbers
-    @race = Race.find(params[:id])
     @people = @race.people.order('number')
   end
 
   def age_groups
     @page_title = "Pickford Hay Days - #{@race.year} #{@race.name} Age Group Results"
-    @race = Race.find(params[:id])
     @age_groups = @race.age_groups.order('low, high, gender_id')
   end
 
