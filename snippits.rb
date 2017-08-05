@@ -20,10 +20,10 @@ fiveK_groups = [
 
 
 # Ok, let's setup a new year
-date = Date.new(2016, 8, 6)
-year = Year.find_or_create_by_year(date.year)
+date = Date.new(2017, 8, 5)
+year = Year.find_by(year: date.year)
 [10, 5, 2].each do |distance|
-  race = year.races.find_or_create_by_name("Hay #{distance}k")
+  race = year.races.find_or_create_by(name: "Hay #{distance}k")
   race.update_attributes :distance => distance, :date => date
 
   age_groups = distance == 2 ? twoK_groups : fiveK_groups

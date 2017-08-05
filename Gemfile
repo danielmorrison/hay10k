@@ -5,6 +5,8 @@ ruby "2.3.1"
 gem 'rails', '~> 4.2'
 gem 'pg'
 
+gem 'rack-ssl'
+
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
