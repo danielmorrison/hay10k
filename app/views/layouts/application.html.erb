@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= controller.controller_name %>: <%= controller.action_name %></title>
+  <title><%= @page_title || "#{controller.controller_name}: #{controller.action_name}" %></title>
   <%= stylesheet_link_tag 'scaffold', 'main' %>
   <%= stylesheet_link_tag 'iphone', :media => 'only screen and (max-device-width: 480px)' %>
   <%= javascript_include_tag "application" %>

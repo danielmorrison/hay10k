@@ -3,10 +3,12 @@ class ReportsController < ApplicationController
   before_filter :find_race, only: [:results, :numbers, :age_groups]
 
   def index
-    render :layout => 'application'
+    @page_title = "Pickford Hay Days - Race Results"
+    render layout: "application"
   end
 
   def results
+    @page_title = "Pickford Hay Days - #{@race.year} #{@race.name} Results"
     # @people = @race.people.order("finishes.time IS NOT NULL, finishes.place").includes(:finishes)
     @finished = @race.people.where("finishes.time IS NOT NULL AND finishes.place IS NOT NULL").order("finishes.place").includes(:finishes)
     @not_finished = @race.people - @finished
@@ -23,6 +25,7 @@ class ReportsController < ApplicationController
   end
 
   def age_groups
+    @page_title = "Pickford Hay Days - #{@race.year} #{@race.name} Age Group Results"
     @race = Race.find(params[:id])
     @age_groups = @race.age_groups.order('low, high, gender_id')
   end
