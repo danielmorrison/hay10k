@@ -1,4 +1,4 @@
-class PeopleController < ApplicationController
+class PeopleController < AuthenticatedController
 
   def index
     @people = Person.joins(registrations: :year).includes(:gender, :races).where(years: {year: @year.year}).order('last_name, first_name')

@@ -1,4 +1,4 @@
-class ActivitiesController < ApplicationController
+class ActivitiesController < AuthenticatedController
   def show
     # Facts
     @races = @year.races

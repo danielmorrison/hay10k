@@ -1,4 +1,4 @@
-class FinishesController < ApplicationController
+class FinishesController < AuthenticatedController
   def index
     @finishes = Finish.order(params[:order] || 'place').load.select{|f| f.year == @year }
   end
