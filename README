@@ -4,10 +4,6 @@ So you're doing the 10K. Lucky you!
 
 == Getting Ready
 
-Back up the data. Just do it, you never know. 
-
-mysqldump -u root hay10k_2007 > dump-pre-2013.sql
-
 See snippits.rb to set up the new data. Change the date, that's it!
 
 == What's next
