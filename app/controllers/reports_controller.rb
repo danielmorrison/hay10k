@@ -1,12 +1,12 @@
 class ReportsController < ApplicationController
   skip_before_filter :find_year
+  before_filter :find_race, only: [:results, :numbers, :age_groups]
 
   def index
     render :layout => 'application'
   end
 
   def results
-    @race = Race.find(params[:id])
     # @people = @race.people.order("finishes.time IS NOT NULL, finishes.place").includes(:finishes)
     @finished = @race.people.where("finishes.time IS NOT NULL AND finishes.place IS NOT NULL").order("finishes.place").includes(:finishes)
     @not_finished = @race.people - @finished
@@ -42,5 +42,12 @@ class ReportsController < ApplicationController
           :disposition => %|attachment; filename="mailing_list.csv"|
       end
     end
+  end
+
+  private
+
+  def find_race
+    year = Year.find_by!(year: params[:year_id])
+    @race = Race.find_by!(year: year, distance: params[:distance].to_i)
   end
 end

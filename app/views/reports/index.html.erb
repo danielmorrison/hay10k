@@ -8,12 +8,13 @@
 
   <table>
     <tr>
-      <% %w(numbers results age_groups).each do |report| %>
+      <% reports = params[:public] ? %w(numbers results age_groups) : %w(results age_groups) %>
+      <% reports.each do |report| %>
         <td style="padding-right: 2em">
           <h3><%= report.humanize %></h3>
 
           <% year.races.each do |race| %>
-            <%= link_to race, controller: 'reports', action: report, id: race.id, year_id: year.year %><br>
+            <%= link_to race, year_report_path(action: report, distance: race.short_name, year_id: year.year) %><br>
           <% end %>
 
         </td>
