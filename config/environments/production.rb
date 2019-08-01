@@ -76,7 +76,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  require "rack/ssl"
-  config.middleware.use Rack::SSL
 end
