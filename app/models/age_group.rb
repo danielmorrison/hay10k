@@ -12,24 +12,23 @@
 class AgeGroup < ActiveRecord::Base
   belongs_to  :gender
   belongs_to  :race
-  
-  validates :low, :high, :gender, :race, :presence => true
-  validates :low, :high, :numericality => true
-    
+
+  validates :low, :high, :gender, :race, presence: true
+  validates :low, :high, numericality: true
+
   def name
-    if low == 0
-      name = "#{high} and under"
+    name = if low == 0
+      "#{high} and under"
     elsif high == 99
-      name = "#{low} and up"
+      "#{low} and up"
     else
-      name = "#{low}-#{high}"
+      "#{low}-#{high}"
     end
-    
+
     "#{gender.name} " + name
   end
-  
+
   def people
-    race.people.where([':low <= age AND :high >= age AND gender_id = :gender', {:low => self.low, :high => self.high, :gender => self.gender_id}]).order("finishes.place").includes(:finishes)
+    race.people.where([":low <= age AND :high >= age AND gender_id = :gender", {low: low, high: high, gender: gender_id}]).order("finishes.place").includes(:finishes)
   end
-  
 end

@@ -20,12 +20,12 @@ class ReportsController < ApplicationController
   end
 
   def numbers
-    @people = @race.people.order('number')
+    @people = @race.people.order("number")
   end
 
   def age_groups
     @page_title = "Pickford Hay Days - #{@race.year} #{@race.name} Age Group Results"
-    @age_groups = @race.age_groups.order('low, high, gender_id')
+    @age_groups = @race.age_groups.order("low, high, gender_id")
   end
 
   def map
@@ -35,12 +35,12 @@ class ReportsController < ApplicationController
 
   def mailing
     year = Year.find_by_year(params[:id])
-    @races = year.races.where('distance > 2').includes({:people => :gender})
+    @races = year.races.where("distance > 2").includes({people: :gender})
     respond_to do |format|
-      format.html { render :layout => false }
+      format.html { render layout: false }
       format.csv do
-        render :type => 'text/csv; charset=utf8; header=present',
-          :disposition => %|attachment; filename="mailing_list.csv"|
+        render type: "text/csv; charset=utf8; header=present",
+               disposition: %(attachment; filename="mailing_list.csv")
       end
     end
   end

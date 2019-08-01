@@ -9,7 +9,7 @@
 #  year_id   :integer(11)
 #
 
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + "/../test_helper"
 
 class FinishTest < Test::Unit::TestCase
   fixtures :finishes

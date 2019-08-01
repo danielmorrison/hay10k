@@ -11,16 +11,14 @@
 #  updated_at   :datetime
 #
 
-require 'test_helper'
+require "test_helper"
 
 class RegistrationTest < ActiveSupport::TestCase
-
   def test_create_finish
     @registration = Factory.build(:registration)
-    
-    assert_difference 'Finish.count', 1 do
+
+    assert_difference "Finish.count", 1 do
       @registration.save
     end
   end
-
 end

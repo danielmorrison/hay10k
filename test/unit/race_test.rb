@@ -8,7 +8,7 @@
 #  year_id  :integer(11)
 #
 
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + "/../test_helper"
 
 class RaceTest < Test::Unit::TestCase
   fixtures :races

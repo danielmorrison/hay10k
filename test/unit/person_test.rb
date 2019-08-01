@@ -14,7 +14,7 @@
 #  number     :integer(11)
 #
 
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + "/../test_helper"
 
 class PersonTest < Test::Unit::TestCase
   fixtures :people

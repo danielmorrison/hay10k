@@ -9,7 +9,7 @@
 #  race_id   :integer(11)
 #
 
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + "/../test_helper"
 
 class AgeGroupTest < Test::Unit::TestCase
   fixtures :age_groups

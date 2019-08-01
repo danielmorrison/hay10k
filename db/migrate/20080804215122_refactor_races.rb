@@ -1,5 +1,4 @@
 class RefactorRaces < ActiveRecord::Migration
-
   class Race < ActiveRecord::Base
     belongs_to :year
   end

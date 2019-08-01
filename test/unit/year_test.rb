@@ -8,7 +8,7 @@
 #  updated_at :datetime
 #
 
-require 'test_helper'
+require "test_helper"
 
 class YearTest < ActiveSupport::TestCase
   # Replace this with your real tests.

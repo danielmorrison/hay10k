@@ -1,9 +1,9 @@
 Factory.define :person do |f|
   f.gender      { Gender.female }
-  f.first_name  'Amy'
-  f.last_name   'Body'
+  f.first_name  "Amy"
+  f.last_name   "Body"
   f.age         30
-  f.city        'Pickford'
+  f.city        "Pickford"
 end
 
 Factory.define :registration do |f|
@@ -13,7 +13,7 @@ Factory.define :registration do |f|
 end
 
 Factory.define :race do |f|
-  f.name 'Hay 10K'
+  f.name "Hay 10K"
 end
 
 Factory.define :year do |f|

@@ -6,7 +6,7 @@
 #  name :string(255)
 #
 
-require File.dirname(__FILE__) + '/../test_helper'
+require File.dirname(__FILE__) + "/../test_helper"
 
 class GenderTest < Test::Unit::TestCase
   fixtures :genders

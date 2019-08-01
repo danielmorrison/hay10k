@@ -4,7 +4,7 @@ class CreateFinishes < ActiveRecord::Migration
       t.column "place", :integer
       t.column "time",  :string
     end
-    
+
     add_column "people", "finish_id", :integer
   end
 

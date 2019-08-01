@@ -1,6 +1,6 @@
 class FinishesController < AuthenticatedController
   def index
-    @finishes = Finish.order(params[:order] || 'place').load.select{|f| f.year == @year }
+    @finishes = Finish.order(params[:order] || "place").load.select { |f| f.year == @year }
   end
 
   # def show
@@ -15,10 +15,10 @@ class FinishesController < AuthenticatedController
     @finish = Finish.new(params[:finish])
     @finish.year = Year.find_by_year(Date.today.year)
     if @finish.save
-      flash[:notice] = 'Finish was successfully created.'
+      flash[:notice] = "Finish was successfully created."
       redirect_to year_finishes_path(@year)
     else
-      render :action => 'new'
+      render action: "new"
     end
   end
 
@@ -31,14 +31,13 @@ class FinishesController < AuthenticatedController
 
     respond_to do |format|
       if @finish.update(finish_params)
-        flash[:notice] = 'Finish was successfully updated.'
+        flash[:notice] = "Finish was successfully updated."
         year_finishes_path(@year)
         format.html
-        format.js
       else
-        format.html { render 'edit' }
-        format.js
+        format.html { render "edit" }
       end
+      format.js
     end
   end
   #
@@ -48,6 +47,7 @@ class FinishesController < AuthenticatedController
   # end
 
   private
+
   def finish_params
     params.require(:finish).permit(:place, :time, :number)
   end

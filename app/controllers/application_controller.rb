@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-private
+  private
+
   def find_year
     @year = Year.find_by(year: params[:year_id])
   end

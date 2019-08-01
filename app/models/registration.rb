@@ -15,12 +15,13 @@ class Registration < ActiveRecord::Base
   belongs_to :race
   belongs_to :person
   belongs_to :year
-  
+
   after_create :build_finish
-  
-private
+
+  private
+
   def build_finish
     place = year.finishes.last.try(:place) || 0
-    Finish.create!(:year => year, :place => place+1)
+    Finish.create!(year: year, place: place + 1)
   end
 end
