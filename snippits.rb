@@ -19,7 +19,7 @@ five_k_groups = [
 ]
 
 # Ok, let's setup a new year
-date = Date.new(2018, 8, 4)
+date = Date.new(2019, 8, 3)
 year = Year.find_or_create_by(year: date.year)
 [10, 5, 2].each do |distance|
   race = year.races.find_or_create_by(name: "Hay #{distance}k")
